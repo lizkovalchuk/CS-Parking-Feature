@@ -1,0 +1,37 @@
+﻿@model IEnumerable<parkingApp.Models.Parking>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+    <h2>Parking Passes Issued</h2>
+
+    @*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+
+    @foreach (var item in Model)
+    {
+        <div>
+            <h4>
+                @Html.DisplayFor(modelItem => item.Driver)
+            </h4>
+            <span>
+                @*@Html.DisplayFor(modelItem => item.C_Time)*@
+                @Html.DisplayFor(modelItem => item._Date)
+            </span>
+            <span>
+                @Html.DisplayFor(modelItem => item._Status)
+            </span>
+            <span>
+                @Html.ActionLink("Edit", "AdminUpdate", new { id = item.Id }) |
+                @Html.ActionLink("Details", "AdminDetails", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "AdminDelete", new { id = item.Id })
+            </span>
+        </div>
+    }
+    <div>@Html.ActionLink("Logout", "Logout", "Login", null, new { @class = "btn btn-warning" })</div>
+
+
+</div>
